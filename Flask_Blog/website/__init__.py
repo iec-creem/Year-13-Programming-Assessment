@@ -5,12 +5,12 @@ from flask_login import LoginManager
 
 # Create app function
 # Returns app
-
 def create_app():
     app = Flask(__name__)
     
     # Import views from views.py
     from .views import views
+    # Import auth from auth.py
     from .auth import auth
     
     # Register blueprints
