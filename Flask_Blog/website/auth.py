@@ -26,8 +26,13 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
         
+        # Check that the email and username are unique
+        
         email_exists = User.query.filter_by(email=email).first()
         username_exists = User.query.filter_by(username=username).first()
+        
+        # Validation of password, username, and email
+        
         if email_exists:
             flash('Email is already in use.', category='error')
         elif username_exists:
@@ -51,10 +56,25 @@ def sign_up():
     return render_template("sign_up.html")
 
 # Login route
-@auth.route("/login")
+@auth.route("/login", methods={'GET', 'POST'})
 # Login fuction
 # Returns login page
 def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        
+        # Check if user exists in database
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password, password):
+                flash('You have logged in successfully!', category='success')
+                login_user(user, remember=True)
+                return redirect(url_for('views.home', user=current_user))
+            else:
+                flash('Incorrect Password.', category='error')
+        else:
+            flash('Email does not exist.', category='error')
     return render_template("login.html")
 
 # Logout route
