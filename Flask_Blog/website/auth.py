@@ -60,19 +60,24 @@ def sign_up():
 # Login fuction
 # Returns login page
 def login():
+    # Gets email and password from login form
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
         
-        # Check if user exists in database
+        # Queries database to receive user information using email address
         user = User.query.filter_by(email=email).first()
+        # Checks email and password
         if user:
+            # If correct log in user and redirect to home page
             if check_password_hash(user.password, password):
                 flash('You have logged in successfully!', category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home', user=current_user))
+            # If incorrect password flash error
             else:
                 flash('Incorrect Password.', category='error')
+        # If incorrect email flash error
         else:
             flash('Email does not exist.', category='error')
     return render_template("login.html")
