@@ -53,7 +53,7 @@ def sign_up():
             flash('Your account has been created!', category='success')
             return redirect(url_for('views.home', user=current_user))
         
-    return render_template("sign_up.html")
+    return render_template("sign_up.html", user=current_user)
 
 # Login route
 @auth.route("/login", methods=['GET', 'POST'])
