@@ -14,3 +14,12 @@ views = Blueprint("views", __name__)
 # Returns home.html
 def home():
     return render_template("home.html", user=current_user)
+
+
+# Create blog post route
+@views.route("/create-post", methods=['GET', 'POST'])
+@login_required
+# Create blog post route function
+# Returns create_post.html
+def create_post():
+    return render_template("create_post.html", user=current_user)
