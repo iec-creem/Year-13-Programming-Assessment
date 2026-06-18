@@ -6,17 +6,18 @@ Make a Post
 
 <form method="POST">
     <!-- Blog title form -->
-    <label for="email">Title</label>
+    <label for="title">Title</label>
     <input type="text" id="title" name="title" class="form-control" placeholder="Blog Title" />
     <br />
 
     <!-- Blog content text area -->
     <textarea name="content" id="content" class="form-control"></textarea>
+
+    <br />
+    <!-- Submit button -->
+    <div align="center">
+        <button class="btn btn-primary" type="submit">Create Post</button>
+    </div>
 </form>
-<br />
-<!-- Submit button -->
-<div align="center">
-    <button class="btn btn-primary" type="submit">Create Post</button>
-</div>
 
 {% endblock %}
