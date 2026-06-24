@@ -22,8 +22,20 @@ def home():
     return render_template("home.html", user=current_user)
 
 
+# Blog page route
+@views.route("/blog")
+# User must be logged in to post
+@login_required
+# Home route function
+# Returns home.html
+def blog():
+    posts = Post.query.all()
+    return render_template("blog.html", user=current_user, posts=posts)
+
+
 # Create blog post route
 @views.route("/create-post", methods=['GET', 'POST'])
+# User must be logged in to post
 @login_required
 # Create blog post route function
 # Returns create_post.html
@@ -41,7 +53,24 @@ def create_post():
             db.session.add(post)
             db.session.commit()
             flash('Post created!', category='success')
-            return redirect(url_for('views.home', user=current_user))
+            return redirect(url_for('views.blog', user=current_user))
             
     
     return render_template("create_post.html", user=current_user)
+
+
+# Delete blog post route
+@views.route("/delete-post/<id>")
+# User must be logged in to post
+@login_required
+def delete_post(id):
+    post = Post.query.filter_by(id=id).first()
+    if not post:
+        flash('Post does not exist', category='error')
+    elif current_user.id != post.author:
+        flash('You do not have permission to delete this post', category='error')
+    else:
+        db.session.delete(post)
+        db.session.commit()
+        flash('Post deleted!', category='success')
+    return redirect(url_for('views.blog', user=current_user))

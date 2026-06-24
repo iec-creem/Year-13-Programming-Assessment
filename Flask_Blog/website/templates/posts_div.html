@@ -8,6 +8,18 @@ Posts
     <div class="card border-dark">
         <div class="card-header d-flex justify-content-between align-items-center">
             <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
+            <!-- Start of the delete dropdown menu -->
+            {% if user.id == post.author %}
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/delete-post/{{post.id}}"class="dropdown-item">Delete</a>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
+            <!-- End of the delete dropdown menu -->
         </div>
 
         <div class="card-body">
