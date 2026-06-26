@@ -75,6 +75,18 @@ def delete_post(id):
         flash('Post deleted!', category='success')
     return redirect(url_for('views.blog', user=current_user))
 
+# View user posts route
+@views.route("/posts/<username>")
+# User must be logged in to post
+@login_required
+def posts(username):
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        flash('No user with that username exists', category='error')
+        return redirect(url_for('views.blog', user=current_user))
+    posts = user.posts
+    return render_template("posts.html", user=current_user, posts=posts, username=username)
+
 
 # Blog comment route
 @views.route("/create-comment/<post_id>", methods=['POST'])
