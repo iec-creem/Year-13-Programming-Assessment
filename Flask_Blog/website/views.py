@@ -29,7 +29,7 @@ def home():
 # Home route function
 # Returns home.html
 def blog():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.date_created.desc())
     return render_template("blog.html", user=current_user, posts=posts)
 
 
