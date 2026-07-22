@@ -8,18 +8,33 @@ Posts
     <div class="card border-dark">
         <div class="card-header d-flex justify-content-between align-items-center">
             <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
-            <!-- Start of the delete dropdown menu -->
-            {% if user.id == post.author %}
-            <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="/delete-post/{{post.id}}" class="dropdown-item">Delete</a>
-                    </li>
-                </ul>
+            <!-- Start of likes section -->
+            <!-- Start of likes div -->
+            <div>
+                <span id="likes-count-{{post.id}}">{{post.likes|length}}</span>
+                {% if user.id in post.likes|map(attribute="author")|list %}
+                <i class="fas fa-thumbs-up" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>
+                {% else %}
+                <i class="far fa-thumbs-up" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>
+                {% endif %}
+                <!-- End of likes section -->
+                
+                <!-- Start of the delete dropdown menu -->
+                {% if user.id == post.author %}
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/delete-post/{{post.id}}" class="dropdown-item">Delete</a>
+                        </li>
+                    </ul>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
+            <!-- End of likes div -->
             <!-- End of the delete dropdown menu -->
+
+
         </div>
 
         <div class="card-body">
