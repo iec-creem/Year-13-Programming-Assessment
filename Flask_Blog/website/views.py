@@ -29,7 +29,8 @@ def home():
 # Home route function
 # Returns home.html
 def blog():
-    posts = Post.query.order_by(Post.date_created.desc())
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
     return render_template("blog.html", user=current_user, posts=posts)
 
 
@@ -80,11 +81,12 @@ def delete_post(id):
 # User must be logged in to post
 @login_required
 def posts(username):
+    page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first()
     if not user:
         flash('No user with that username exists', category='error')
         return redirect(url_for('views.blog', user=current_user))
-    posts = user.posts
+    posts = Post.query.filter_by(user=user).order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
     return render_template("posts.html", user=current_user, posts=posts, username=username)
 
 
