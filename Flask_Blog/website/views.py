@@ -67,18 +67,14 @@ def create_post():
 # User must be logged in to post
 @login_required
 def delete_post(id):
-    likes = Like.query.filter_by(post_id=id).first()
-    comments = Comment.query.filter_by(post_id=id).first()
     post = Post.query.filter_by(id=id).first()
     if not post:
         flash('Post does not exist', category='error')
     elif current_user.id != post.author:
         flash('You do not have permission to delete this post', category='error')
     else:
-        if likes:
-            db.session.delete(likes)
-        if comments:
-            db.session.delete(comments)
+        Comment.query.filter_by(post_id=id).delete(synchronize_session=False)
+        Like.query.filter_by(post_id=id).delete(synchronize_session=False)
         db.session.delete(post)
         db.session.commit()
         flash('Post deleted!', category='success')
