@@ -68,6 +68,7 @@ def create_post():
 @login_required
 def delete_post(id):
     likes = Like.query.filter_by(post_id=id).first()
+    comments = Comment.query.filter_by(post_id=id).first()
     post = Post.query.filter_by(id=id).first()
     if not post:
         flash('Post does not exist', category='error')
@@ -76,6 +77,8 @@ def delete_post(id):
     else:
         if likes:
             db.session.delete(likes)
+        if comments:
+            db.session.delete(comments)
         db.session.delete(post)
         db.session.commit()
         flash('Post deleted!', category='success')
