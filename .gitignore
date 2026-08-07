@@ -1,3 +1,4 @@
 #ignore all files ending in .pyc and .db
 *.pyc
 *.db
+assets/
