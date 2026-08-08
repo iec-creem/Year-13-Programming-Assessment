@@ -46,6 +46,9 @@ def create_post():
     if request.method == "POST":
         title = request.form.get('title')
         content = request.form.get('content')
+        # Removes whitespaces before and after user posts
+        if content is not None:
+            content = content.strip()
         
         if not title:
             flash('Title cannot be empty', category='error')
@@ -92,7 +95,7 @@ def update_post(id):
     form = PostForm()
     if form.validate_on_submit():
         post.title = form.title.data
-        post.content = form.content.data
+        post.content = form.content.data.strip() # .strip() removes whitespaces before and after user posts when updated
         db.session.commit()
         flash('Post updated!', category='success')
         page = request.args.get('page', 1, type=int)
