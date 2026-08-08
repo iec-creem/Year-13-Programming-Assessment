@@ -10867,7 +10867,7 @@ header.masthead {
   position: relative;
   overflow: hidden;
   padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-bottom: 4rem;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: scroll;
@@ -10887,7 +10887,7 @@ header.masthead .masthead-content .masthead-subheading {
 @media (min-width: 992px) {
   header.masthead {
     padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-bottom: 6rem;
   }
   header.masthead .masthead-content .masthead-heading {
     font-size: 6rem;
