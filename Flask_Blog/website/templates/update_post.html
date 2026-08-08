@@ -4,50 +4,48 @@
 {% block content %}
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-        <div class="col-lg-6">
-            <div class="content-section">
-                <form method="POST" action="">
-                    {{form.hidden_tag()}}
-                    <fieldset class="form-group">
-                        <legend class="border-bottom mb-4 text-center"><h2 class="mt-3">Update Post</h2></legend>
-                        <div class="form-group">
-                            {{form.title.label(class="form-control-label")}}
-                            {% if form.title.errors %}
-                                {{form.title(class="form-control form-control-lg is-invalid")}}
-                                <div class="invalid-feedback">
-                                    {% for error in form.title.errors %}
-                                        <span>{{error}}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{form.title(class="form-control form-control-lg")}}
-                            {% endif %}
-                        </div>
-                    </fieldset>
-                    <br/>
-
-                    <fieldset class="form-group">
-                        <div class="form-group">
-                            {{form.content.label(class="form-control-label")}}
-                            {% if form.content.errors %}
-                                {{form.content(class="form-control form-control-lg is-invalid")}}
-                                <div class="invalid-feedback">
-                                    {% for error in form.content.errors %}
-                                        <span>{{error}}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{form.content(class="form-control form-control-lg")}}
-                            {% endif %}
-                        </div>
-                    </fieldset>
-                    <br/>
-                    <div class="form-group" align="center">
-                        {{form.submit(class="btn btn-outline-info btn-light")}}
+        <div class="content-section">
+            <form method="POST" action="">
+                {{form.hidden_tag()}}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4 text-center"><h2 class="mt-3">Update Post</h2></legend>
+                    <div class="form-group">
+                        {{form.title.label(class="form-control-label")}}
+                        {% if form.title.errors %}
+                            {{form.title(class="form-control form-control-lg is-invalid")}}
+                            <div class="invalid-feedback">
+                                {% for error in form.title.errors %}
+                                    <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{form.title(class="form-control form-control-lg")}}
+                        {% endif %}
                     </div>
-                    <br/>
-                </form>
-            </div>
+                </fieldset>
+                <br/>
+
+                <fieldset class="form-group">
+                    <div class="form-group">
+                        {{form.content.label(class="form-control-label")}}
+                        {% if form.content.errors %}
+                            {{form.content(class="form-control form-control-lg is-invalid")}}
+                            <div class="invalid-feedback">
+                                {% for error in form.content.errors %}
+                                    <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{form.content(class="form-control form-control-lg")}}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <br/>
+                <div class="form-group" align="center">
+                    {{form.submit(class="btn btn-outline-info btn-light")}}
+                </div>
+                <br/>
+            </form>
         </div>
     </div>
 </div>
