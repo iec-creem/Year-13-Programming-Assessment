@@ -4224,6 +4224,10 @@ textarea.form-control-lg {
   margin-bottom: 0;
 }
 
+.post-content {
+  white-space: pre-line;
+}
+
 .card-link + .card-link {
   margin-left: var(--bs-card-spacer-x);
 }
