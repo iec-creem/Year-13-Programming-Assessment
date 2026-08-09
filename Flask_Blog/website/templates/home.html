@@ -1,4 +1,119 @@
 <!-- Page extends to template.html -->
 {% extends "template.html"%} {% block title %} Home {% endblock %}
 <!-- Home page content -->
-{% block content %} Home {% endblock %}
+{% block content %}
+
+        <!-- Header -->
+        <header class="masthead text-center text-black">
+            <div class="masthead-content">
+                <div class="container px-5">
+                    <h1 class="masthead-heading mb-0">Sancta Maria Rockclimbing</h1>
+                </div>
+            </div>
+        </header>
+        <!-- Content section 1 -->
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 text-center">
+                    <div class="p-5">
+                        <h2 class="display-4">An adventurous sport where every move requires focus, balance, and determination to reach the top.</h2>
+                        <p>
+                            Rock climbing is a challenging and adventurous sport where climbers use strength, balance, and problem-solving to overcome different routes and reach the top.
+                            It involves climbing artificial or natural rock surfaces using handholds and footholds.
+                            Originating as a recreational activity in the late 19th century, it has since developed into a popular sport enjoyed both indoors and outdoors.
+                            From carefully planning each movement to overcoming difficult sections of a climb, rock climbing creates a rewarding experience that tests both physical ability and mental determination.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content section 2 -->
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center">
+                <h1 class="mt-3">Climbing at Sancta Maria</h1>
+            </div>
+        </div>
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 text-center">
+                    <div class="p-5"> 
+                        <p>
+                            Rock climbing at Sancta Maria provides students with an exciting opportunity to challenge themselves both physically and mentally.
+                            The sport encourages students to develop strength, balance and focus, all while improving their critical thinking and problem solving skills.
+                            Students are inspired to test out new ideas and betas while learning new techniques and gaining confidence on the wall.
+                            Rock climbing at Sancta Maria fosters a sense of community and teamwork, as students support and encourage each other to reach new heights.
+                            Whether climbing for recreation or competition, students can build confidence and perseverance in a supportive environment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 3 -->
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center">
+                <h1 class="mt-3">Types of climbing</h1>
+            </div>
+        </div>
+        <!-- Types section 1 -->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{{ url_for('static', filename='assets/img/home-bouldering.jpg') }}" alt="Person bouldering" /></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">Bouldering</h2>
+                            <p>
+                                A short and physically demanding style of climbing that focuses on strength, technique, and problem-solving.
+                                It is performed without ropes on shorter walls, with protective mats placed underneath the climber.
+                                The challenging routes require careful planning and precise movements to reach the final hold.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Types section 2 -->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{{ url_for('static', filename='assets/img/home-top-rope.jpg') }}" alt="Top rope wall" /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Top Rope Climbing</h2>
+                            <p>
+                                A controlled and accessible style of climbing where the rope is secured to an anchor above the climber.
+                                The rope provides support throughout the climb, allowing climbers to focus on technique and movement.
+                                It is often used by beginners while they develop confidence, strength, and fundamental climbing skills.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Types section 3 -->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{{ url_for('static', filename='assets/img/home-lead.jpg') }}" alt="Person lead climbing" /></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">Lead Climbing</h2>
+                            <p>
+                                A challenging style where climbers attach their rope to protection points as they progress up the wall.
+                                Unlike top-rope climbing, the rope is not already secured above them, making each movement more demanding.
+                                It requires confidence, technique, and careful planning as climbers work their way toward the top.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}
